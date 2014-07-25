@@ -23,25 +23,35 @@
         android:src="@drawable/balance" 
         android:scaleType="fitXY"
         android:adjustViewBounds="true"/>
-
+    
+    <com.androidplot.xy.XYPlot
+            android:id="@+id/mainPlot"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            title="A Simple XYPlot Example"
+            />
+    
     <TextView
-        android:id="@+id/balancestatus"
+        android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Waiting for Start"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <ImageButton
-        android:id="@+id/startwalkbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/startwalk" />
-
-    <ImageView
-        android:id="@+id/balancephase0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/balancephase0" />
+        android:text="70pt"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+     <Button
+                android:id="@+id/sendButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonsendselector"
+                android:shadowColor="#A8A8A8"
+                android:text="완료"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+    
 
 </LinearLayout> 
 
