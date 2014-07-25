@@ -52,7 +52,11 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="15dp"
                     android:typeface="serif" />
-
+<RelativeLayout
+                android:id="@+id/layoutProgressBar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp" >
                 <ProgressBar
                     android:id="@+id/progressBarToday2"
                     style="?android:attr/progressBarStyleHorizontal"
@@ -63,6 +67,14 @@
                     android:max="50"
                     android:progress="25"
                     android:progressDrawable="@drawable/circular_progress_bar2" />
+                <TextView
+                    android:id="@+id/textviewStep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="87"
+                    android:textSize="30sp" />
+                </RelativeLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -89,6 +101,11 @@
 
                     
                 </LinearLayout>
+                <RelativeLayout
+                android:id="@+id/layoutProgressBar1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp" >
 
                 <ProgressBar
                     android:id="@+id/progressBarToday"
@@ -100,6 +117,15 @@
                     android:max="50"
                     android:progress="32"
                     android:progressDrawable="@drawable/circular_progress_bar" />
+                <TextView
+                    android:id="@+id/textviewStep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="240"
+                    android:textSize="30sp" />
+                
+                </RelativeLayout>
             </LinearLayout>
 </LinearLayout>
             <TextView

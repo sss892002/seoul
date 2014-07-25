@@ -105,6 +105,12 @@ public class MainActivity extends Activity {
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
+		
+		
+		fragmentList.add(new HomeFragment());
+		fragmentList.add(new RegisterFragment());
+		fragmentList.add(new GaitFragment());
+		fragmentList.add(new BalanceFragment());
 
 		if (savedInstanceState == null) {
 			// on first time display view for first nav item
@@ -160,9 +166,14 @@ public class MainActivity extends Activity {
 	/**
 	 * Diplaying fragment view for selected nav drawer list item
 	 * */
+	
+	private ArrayList<Fragment> fragmentList = new ArrayList<Fragment>();
 	public void displayView(final int position) {
 		// update the main content by replacing fragments
+		
+		/*
 		switch (position) {
+		
 		case 0:
 			fragment = new HomeFragment();
 			break;
@@ -180,38 +191,25 @@ public class MainActivity extends Activity {
 		default:
 			break;
 		}
+		*/
+		fragment = fragmentList.get(position);
 
 		if (fragment != null) {
-			new Handler().postDelayed(new Runnable()
-			{
+			FragmentManager fragmentManager = getFragmentManager();
+			fragmentManager.beginTransaction()
+					.replace(R.id.frame_container, fragment).commit();
 
-
-				@Override
-			    public void run()
-			    {
-			    	FragmentManager fragmentManager = getFragmentManager();
-					fragmentManager.beginTransaction()
-							.replace(R.id.frame_container, fragment).commit();
-
-					// update selected item and title, then close the drawer
-					
-					
-					mDrawerList.setItemChecked(position, true);
-					mDrawerList.setSelection(position);
-					setTitle(navMenuTitles[position]);
-			    	
-			    
-
-			    }
-			}, 250);
+			// update selected item and title, then close the drawer
+			
+			
+			mDrawerList.setItemChecked(position, true);
+			mDrawerList.setSelection(position);
+			setTitle(navMenuTitles[position]);
+			
 			
 			
 			mDrawerLayout.closeDrawer(mDrawerList);
 		
-			
-			
-			
-			
 			
 			
 		} else {
@@ -243,6 +241,12 @@ public class MainActivity extends Activity {
 		super.onConfigurationChanged(newConfig);
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+	
+	public void magic(int score)
+	{
+		GaitFragment gait = (GaitFragment)fragmentList.get(2);
+		gait.change(score);
 	}
 
 }

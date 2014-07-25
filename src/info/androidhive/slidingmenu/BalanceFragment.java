@@ -35,7 +35,7 @@ import android.widget.Toast;
 public class BalanceFragment extends Fragment {
 	
 	public BalanceFragment(){}
-	
+	private float value;
 	ImageButton statusbutton;
 	TextView balancestatus;
 	ImageView phaseview;
@@ -194,7 +194,9 @@ public class BalanceFragment extends Fragment {
 	public void done()
 	{
 		MainActivity activity = (MainActivity)this.getActivity();
+		
 		activity.displayView(2);
+		activity.magic((int)value);
 	}
 	// The Handler that gets information back from the BluetoothChatService
     private final Handler mHandler = new Handler() {
@@ -235,7 +237,7 @@ public class BalanceFragment extends Fragment {
                 		}
                 		else if(Integer.parseInt(split[0])==0)
         				{
-                			float value = Float.parseFloat(split[1]);
+                			value = Float.parseFloat(split[1]);
                 			float min = 0.5f;
                 			float max = 5.0f;
                 			value = (value - min)/max*100;
