@@ -10,15 +10,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class GaitFragment extends Fragment {
 	
 	public GaitFragment(){}
 	
-	ImageButton startwalkbtn;
+
 	ImageView standingman;
 	TextView gaitstatus;
 	TextView scoreview;
@@ -29,57 +32,22 @@ public class GaitFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
- 
+
+     
         View rootView = inflater.inflate(R.layout.fragment_gait, container, false);
-       
-        
-        startwalkbtn = (ImageButton)rootView.findViewById(R.id.startwalkbtn);
-	    standingman = (ImageView)rootView.findViewById(R.id.posview);
-		
+        ProgressBar pb = (ProgressBar) rootView.findViewById(R.id.progressBarToday);
 
-	startwalkbtn.setOnClickListener (new OnClickListener(){
-		
-		public void onClick(View v) {
-		
-	        Typeface typeface = Typeface.createFromAsset(getAssets(), "SeoulHangangB.mp3");
-	        TextView scoreview = (TextView) findViewById(R.id.walkscore);
-	        scoreview.setTypeface(typeface);
-	        scoreview.setText("테스트 ");
-	        
-		if(gaitint==1){
-		startwalkbtn.setImageResource(R.drawable.walkagain);
-		standingman.setImageResource(R.drawable.walk);
-		gaitstatus.setText("Currently Recording your walk pattern");
-		gaitint=2;
+        Animation an = new RotateAnimation(0.0f, 90.0f, 100f, 100f);
+        an.setFillAfter(true);
+        pb.startAnimation(an);
+
+        ProgressBar pb2 = (ProgressBar) rootView.findViewById(R.id.progressBarToday2);
+
+        Animation an2 = new RotateAnimation(0.0f, 90.0f, 100f, 100f);
+        an2.setFillAfter(true);
+        pb2.startAnimation(an2);
+ 
 	
-		}
-		
-		else if(gaitint==2){
-			startwalkbtn.setImageResource(R.drawable.walkagain);
-			standingman.setImageResource(R.drawable.okay);
-			gaitstatus.setText("Recording Finished");
-			gaitint=0;
-			}
-		else if(gaitint==0){
-			startwalkbtn.setImageResource(R.drawable.startwalk);
-			standingman.setImageResource(R.drawable.standing);
-			gaitstatus.setText("Waiting for Start");
-			gaitint=1;
-			}
-		
-		}
-	    // TODO Auto-generated method stub
-
-		private TextView findViewById(int walkscore) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		private AssetManager getAssets() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-	});
 	 return rootView;
     }
 }
